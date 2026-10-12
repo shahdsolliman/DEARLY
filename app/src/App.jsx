@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import './App.css'
 
 const instagramUrl = 'https://www.instagram.com/dearly_digitalstudio/'
+const instagramDmUrl = 'https://ig.me/m/dearly_digitalstudio'
 
 const templateCategories = [
   {
@@ -431,7 +432,16 @@ function App() {
   }, [copy.metadata.description, copy.metadata.title, siteLanguage])
 
   return (
-    <div className="page-shell" dir={siteLanguage === 'ar' ? 'rtl' : 'ltr'} lang={siteLanguage}>
+    <div
+      className="page-shell"
+      dir={siteLanguage === 'ar' ? 'rtl' : 'ltr'}
+      lang={siteLanguage}
+      onClick={(event) => {
+        if (mobileMenuOpen && !event.target.closest('.mobile-menu-toggle')) {
+          setMobileMenuOpen(false)
+        }
+      }}
+    >
       <header className="site-header">
         <a className="brand-block" href="#home" aria-label={siteLanguage === 'ar' ? 'الرئيسية — ديرلي' : 'Dearly home'}>
           <img src="/navbarlogo.png" alt={siteLanguage === 'ar' ? 'شعار ديرلي' : 'Dearly logo'} className="brand-mark" />
@@ -472,7 +482,7 @@ function App() {
 
           <a
             className="contact-btn mobile-contact-btn"
-            href={instagramUrl}
+            href={instagramDmUrl}
             target="_blank"
             rel="noreferrer"
             onClick={() => setMobileMenuOpen(false)}
@@ -503,7 +513,7 @@ function App() {
 
         <a
           className="contact-btn desktop-contact-btn"
-          href={instagramUrl}
+          href={instagramDmUrl}
           target="_blank"
           rel="noreferrer"
         >
@@ -646,7 +656,7 @@ function App() {
                   {selectedTemplateCategory?.types[siteLanguage]}{' '}
                   {copy.templates.comingSoonOutro}
                 </p>
-                <a href={instagramUrl} target="_blank" rel="noreferrer">
+                <a href={instagramDmUrl} target="_blank" rel="noreferrer">
                   {copy.templates.contact} <ExternalArrowIcon />
                 </a>
               </div>
@@ -790,7 +800,7 @@ function App() {
           </div>
           <a
             className="primary-btn"
-            href={instagramUrl}
+            href={instagramDmUrl}
             target="_blank"
             rel="noreferrer"
           >
