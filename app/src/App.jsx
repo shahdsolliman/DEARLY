@@ -89,6 +89,34 @@ const templates = [
     href: 'https://golden-hour-sand.vercel.app/lina-adam'
   },
   {
+    title: 'Birthday Plan',
+    category: 'celebrations',
+    type: { en: 'Birthday invitation', ar: 'دعوة عيد ميلاد' },
+    description: {
+      en: 'A joyful birthday surprise with a personal invitation and a day made to celebrate.',
+      ar: 'مفاجأة عيد ميلاد مبهجة، بدعوة شخصية وتفاصيل تجعل اليوم احتفالًا لا يُنسى.'
+    },
+    preview: {
+      en: {
+        kicker: 'A BIRTHDAY INVITATION',
+        headline: 'Happy Birthday',
+        subtitle: 'A little surprise, made just for you',
+        detail: 'Let the celebration begin'
+      },
+      ar: {
+        kicker: 'دعوة عيد ميلاد',
+        headline: 'عيد ميلاد سعيد',
+        subtitle: 'مفاجأة صغيرة صُممت من أجلك',
+        detail: 'لتبدأ الاحتفالات'
+      }
+    },
+    previewAssets: {
+      mobile: '/BDPhone.png',
+      message: '/BD.png'
+    },
+    href: 'https://birthdayplan.vercel.app/'
+  },
+  {
     title: 'Chroma',
     category: 'events',
     type: { en: 'Lipgloss workshop · Event website', ar: 'موقع ورشة صناعة ملمع الشفاه' },
