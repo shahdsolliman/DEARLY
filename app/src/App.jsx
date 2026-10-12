@@ -370,13 +370,33 @@ function TemplateArtwork({ preview, templateAssets }) {
         ) : (
           <>
             <h4>{preview.headline}</h4>
-            <span className="template-artwork-divider"><i />✳<i /></span>
+            <span className="template-artwork-divider">
+              <i />
+              <span className="template-ornament" />
+              <i />
+            </span>
             <p className="template-artwork-subtitle">{preview.subtitle}</p>
             <p className="template-artwork-detail">{preview.detail}</p>
           </>
         )}
       </div>
     </div>
+  )
+}
+
+function ExternalArrowIcon() {
+  return (
+    <svg className="external-arrow-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+      <path d="M4 12 12 4M5 4h7v7" />
+    </svg>
+  )
+}
+
+function TimelineArrowIcon() {
+  return (
+    <svg className="timeline-arrow-icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+      <path d="M3 10h14m-5-5 5 5-5 5" />
+    </svg>
   )
 }
 
@@ -592,7 +612,7 @@ function App() {
                     </div>
                     <div className="template-card-actions">
                       <a href={template.href} target="_blank" rel="noreferrer">
-                        {copy.templates.openTemplate} <span aria-hidden="true">↗</span>
+                        {copy.templates.openTemplate} <ExternalArrowIcon />
                       </a>
                       {template.category === 'weddings' && (
                         <a
@@ -601,7 +621,7 @@ function App() {
                           target="_blank"
                           rel="noreferrer"
                         >
-                          {copy.templates.openMessages} <span aria-hidden="true">↗</span>
+                          {copy.templates.openMessages} <ExternalArrowIcon />
                         </a>
                       )}
                     </div>
@@ -611,7 +631,7 @@ function App() {
             </div>
           ) : (
             <div className="template-empty-state" aria-live="polite">
-              <span aria-hidden="true">✳</span>
+              <span className="template-ornament" aria-hidden="true" />
               <div>
                 <p className="eyebrow muted">{selectedTemplateCategory?.label[siteLanguage]}</p>
                 <h3>{copy.templates.comingSoon}</h3>
@@ -621,7 +641,7 @@ function App() {
                   {copy.templates.comingSoonOutro}
                 </p>
                 <a href={instagramUrl} target="_blank" rel="noreferrer">
-                  {copy.templates.contact} <span aria-hidden="true">↗</span>
+                  {copy.templates.contact} <ExternalArrowIcon />
                 </a>
               </div>
             </div>
@@ -645,7 +665,11 @@ function App() {
                 <div className="step-line" />
                 <div className="step-top">
                   <span className="step-number">{String(index + 1).padStart(2, '0')}</span>
-                  {index < approachSteps.length - 1 && <span className="step-arrow">→</span>}
+                  {index < approachSteps.length - 1 && (
+                    <span className="step-arrow">
+                      <TimelineArrowIcon />
+                    </span>
+                  )}
                 </div>
                 <h3>{title}</h3>
                 <div className="step-line step-line-bottom" />
