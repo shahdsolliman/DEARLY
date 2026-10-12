@@ -133,7 +133,8 @@ const siteCopy = {
       eyebrow: 'DEARLY · DIGITAL EXPERIENCE STUDIO',
       title: 'Digital experiences,',
       titleAccent: 'made personal.',
-      subtitle: 'Thoughtful little worlds for life’s most meaningful moments.',
+      subtitleLead: 'Thoughtful little worlds for life’s most',
+      subtitleEnding: 'meaningful moments.',
       explore: 'Explore experiences',
       instagram: 'Instagram'
     },
@@ -216,7 +217,8 @@ const siteCopy = {
       eyebrow: 'ديرلي · نصنع تجارب رقمية',
       title: 'حكايات رقمية',
       titleAccent: 'نصمّمها لكم.',
-      subtitle: 'نصنع تجارب رقمية دافئة تحتفي بلحظاتكم الأجمل.',
+      subtitleLead: 'نصنع تجارب رقمية دافئة تحتفي',
+      subtitleEnding: 'بلحظاتكم الأجمل.',
       explore: 'اكتشفوا قوالبنا',
       instagram: 'إنستغرام'
     },
@@ -520,7 +522,11 @@ function App() {
               {copy.hero.title}
               <span>{copy.hero.titleAccent}</span>
             </h1>
-            <p className="subtitle">{copy.hero.subtitle}</p>
+            <p className="subtitle">
+              <span>{copy.hero.subtitleLead}</span>
+              {' '}
+              <span className="subtitle-ending">{copy.hero.subtitleEnding}</span>
+            </p>
 
             <div className="hero-actions">
               <a className="primary-btn hero-primary-btn" href="#experiences">
