@@ -100,6 +100,7 @@
   font-size: 0.72rem;
   letter-spacing: 0.08em;
   color: rgba(77, 31, 45, 0.8);
+  text-align: center;
   text-transform: uppercase;
 }
 
@@ -221,6 +222,7 @@
   justify-content: center;
   gap: 1.2rem;
   margin-top: 2.1rem;
+  margin-inline: auto;
 }
 
 .primary-btn,
@@ -1861,6 +1863,7 @@
     border-bottom: 1px solid rgba(91, 47, 44, 0.12);
     font-size: 0.66rem;
     letter-spacing: 0.08em;
+    text-align: center;
     transition: color 180ms ease, background-color 180ms ease;
   }
 
@@ -1877,7 +1880,7 @@
 
   .contact-btn.mobile-contact-btn {
     display: inline-flex;
-    align-self: flex-end;
+    align-self: center;
     margin-top: 0.75rem;
     transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease;
   }
