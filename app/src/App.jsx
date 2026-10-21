@@ -431,12 +431,148 @@ function TimelineArrowIcon() {
   )
 }
 
+function ReelSceneDemo() {
+  const [activeScene, setActiveScene] = useState('wa')
+  const [recordMode, setRecordMode] = useState(false)
+
+  useEffect(() => {
+    let timers = []
+    const durationMap = { wa: 7200, env: 7200, out: 5000 }
+
+    const runSequence = (sceneId) => {
+      timers.forEach((timer) => clearTimeout(timer))
+      timers = []
+
+      if (sceneId === 'all') {
+        let offset = 0
+        ;['wa', 'env', 'out'].forEach((id) => {
+          timers.push(
+            window.setTimeout(() => {
+              setActiveScene(id)
+            }, offset)
+          )
+          offset += durationMap[id]
+        })
+        return
+      }
+
+      setActiveScene(sceneId)
+    }
+
+    runSequence('wa')
+    return () => timers.forEach((timer) => clearTimeout(timer))
+  }, [])
+
+  const triggerSequence = (sceneId) => {
+    if (sceneId === 'all') {
+      const durationMap = { wa: 7200, env: 7200, out: 5000 }
+      let offset = 0
+      ;['wa', 'env', 'out'].forEach((id) => {
+        window.setTimeout(() => setActiveScene(id), offset)
+        offset += durationMap[id]
+      })
+      return
+    }
+
+    setActiveScene(sceneId)
+  }
+
+  const weddingDetails = {
+    names: 'Lina & Adam',
+    subtitle: 'Together with their families',
+    date: '15 May 2027',
+    venue: 'Moonlit Garden Hall',
+    url: 'golden-hour-sand.vercel.app'
+  }
+
+  return (
+    <div className={`reel-demo ${recordMode ? 'is-record-mode' : ''}`}>
+      <div className="reel-toolbar" role="toolbar" aria-label="Reel scene controls">
+        <button type="button" className="is-primary" onClick={() => triggerSequence('all')}>▶ Play all</button>
+        <button type="button" className={activeScene === 'wa' ? 'is-active' : ''} onClick={() => triggerSequence('wa')}>1 · WhatsApp</button>
+        <button type="button" className={activeScene === 'env' ? 'is-active' : ''} onClick={() => triggerSequence('env')}>2 · Envelope</button>
+        <button type="button" className={activeScene === 'out' ? 'is-active' : ''} onClick={() => triggerSequence('out')}>3 · Outro</button>
+        <button type="button" onClick={() => setRecordMode((value) => !value)}>
+          {recordMode ? 'Exit record mode' : 'Record mode (H)'}
+        </button>
+      </div>
+
+      <div className="reel-stage-shell">
+        <div className="reel-stage">
+          <section className={`reel-scene reel-scene-wa ${activeScene === 'wa' ? 'run' : ''}`}>
+            <div className="reel-heading">Your wedding invitation.<i className="reel-script">Reimagined.</i></div>
+
+            <div className="reel-phone">
+              <div className="reel-phone-header"><div className="reel-avatar">L</div>{weddingDetails.names}</div>
+              <div className="reel-chat">
+                <div className="reel-bubble">
+                  You&apos;re invited to {weddingDetails.names}&apos;s wedding 💍
+                  <div className="reel-link-card">
+                    <div className="reel-link-image">L&amp;A</div>
+                    <div className="reel-link-text">
+                      {weddingDetails.names} · Wedding Invitation
+                      <u>{weddingDetails.url}</u>
+                    </div>
+                  </div>
+                  <span className="reel-tick">✓✓</span>
+                </div>
+              </div>
+              <div className="reel-composer"><span><em>You&apos;re invited to {weddingDetails.names}&apos;s wedding 💍</em></span></div>
+            </div>
+
+            <div className="reel-ring" />
+            <div className="reel-ripple" />
+          </section>
+
+          <section className={`reel-scene reel-scene-env ${activeScene === 'env' ? 'run' : ''}`}>
+            <div className="reel-cam">
+              <div className="reel-env-header">
+                <div className="reel-cap">A joyful invitation for you</div>
+                <p>{weddingDetails.names}</p>
+              </div>
+
+              <div className="reel-envelope">
+                <div className="reel-envelope-back" />
+                <div className="reel-card">
+                  <div className="reel-card-name">{weddingDetails.names}</div>
+                  <small>{weddingDetails.date}</small>
+                  <small>{weddingDetails.venue}</small>
+                </div>
+                <div className="reel-flap-left" />
+                <div className="reel-flap-right" />
+                <div className="reel-flap-bottom" />
+                <div className="reel-envelope-front" />
+                <div className="reel-seal"><div>L&amp;A<small>2026</small></div></div>
+              </div>
+
+              <div className="reel-cta">OPEN INVITATION</div>
+            </div>
+            <div className="reel-glow" />
+          </section>
+
+          <section className={`reel-scene reel-scene-out ${activeScene === 'out' ? 'run' : ''}`}>
+            <div className="reel-out-mark">L&amp;A</div>
+            <h2>{weddingDetails.subtitle}.<br />Their invitation.</h2>
+            <div className="reel-out-line" />
+            <div className="reel-out-script">{weddingDetails.date} · {weddingDetails.venue}</div>
+            <div className="reel-out-brand">Golden Hour</div>
+          </section>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeTemplateCategory, setActiveTemplateCategory] = useState('all')
   const [siteLanguage, setSiteLanguage] = useState('en')
   const [activeJourneyStep, setActiveJourneyStep] = useState('01')
   const [journeyHasBeenOpened, setJourneyHasBeenOpened] = useState(false)
+  const [activePage, setActivePage] = useState(() => {
+    if (typeof window === 'undefined') return 'home'
+    return window.location.hash === '#reel' ? 'reel' : 'home'
+  })
   const copy = siteCopy[siteLanguage]
   const selectedJourneyStep = copy.journey.steps[Number(activeJourneyStep) - 1]
   const approachSteps = copy.approach.steps
@@ -446,6 +582,17 @@ function App() {
   const selectedTemplateCategory = templateCategories.find(
     (category) => category.id === activeTemplateCategory
   )
+
+  useEffect(() => {
+    const syncHashRoute = () => {
+      setActivePage(window.location.hash === '#reel' ? 'reel' : 'home')
+    }
+
+    window.addEventListener('hashchange', syncHashRoute)
+    syncHashRoute()
+
+    return () => window.removeEventListener('hashchange', syncHashRoute)
+  }, [])
 
   useEffect(() => {
     document.documentElement.lang = siteLanguage
@@ -458,6 +605,24 @@ function App() {
     document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', copy.metadata.title)
     document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', copy.metadata.description)
   }, [copy.metadata.description, copy.metadata.title, siteLanguage])
+
+  if (activePage === 'reel') {
+    return (
+      <div className="page-shell reel-page-shell" dir={siteLanguage === 'ar' ? 'rtl' : 'ltr'} lang={siteLanguage}>
+        <header className="site-header reel-header">
+          <a className="brand-block" href="#home" aria-label={siteLanguage === 'ar' ? 'الرئيسية — ديرلي' : 'Dearly home'}>
+            <img src="/navbarlogo.png" alt={siteLanguage === 'ar' ? 'شعار ديرلي' : 'Dearly logo'} className="brand-mark" />
+          </a>
+
+          <a className="contact-btn desktop-contact-btn" href="#home" onClick={() => setActivePage('home')}>
+            {siteLanguage === 'ar' ? 'العودة للموقع' : 'Back to website'}
+          </a>
+        </header>
+
+        <ReelSceneDemo />
+      </div>
+    )
+  }
 
   return (
     <div
@@ -517,6 +682,13 @@ function App() {
           >
             {copy.nav.contact}
           </a>
+          <a
+            className="nav-link"
+            href="#reel"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            {(siteLanguage === 'ar' ? 'الفيديو' : 'REEL').toUpperCase()}
+          </a>
         </nav>
 
         <div className="header-language-switch" role="group" aria-label={copy.nav.languageLabel}>
@@ -569,6 +741,9 @@ function App() {
             <div className="hero-actions">
               <a className="primary-btn hero-primary-btn" href="#experiences">
                 {copy.hero.explore}
+              </a>
+              <a className="secondary-btn" href="#reel">
+                {siteLanguage === 'ar' ? 'عرض الفيديو' : 'View reel'}
               </a>
               <a
                 className="secondary-btn"

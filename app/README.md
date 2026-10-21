@@ -1,5 +1,19 @@
 # React + Vite
 
+## Live visitor dashboard
+
+The visitor counter uses Supabase. Run `supabase/visitor-counter.sql` in the
+project's SQL Editor, then set `VITE_SUPABASE_URL` and
+`VITE_SUPABASE_PUBLISHABLE_KEY` in the local `.env.local` file and in the
+production hosting environment. The publishable key is intended for browser
+use; never put a Supabase secret or service-role key in frontend code.
+
+Open `/?page=dashboard` and request a one-time sign-in link for
+`shahd.soliman2050@gmail.com`. Add the deployed site's root URL to Supabase
+Authentication's allowed redirect URLs so the link can return to the dashboard.
+The dashboard shows visitors active within the last 90 seconds and refreshes
+every 10 seconds.
+
 This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
 Currently, two official plugins are available:

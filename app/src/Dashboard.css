@@ -1,0 +1,106 @@
+.visitor-dashboard {
+  min-height: 100vh;
+  padding: 1.5rem 6vw;
+  background: #efe4da;
+  color: #4d1f2d;
+  font-family: 'Tajawal', sans-serif;
+}
+
+.visitor-dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(91, 47, 44, 0.18);
+}
+
+.visitor-dashboard-brand {
+  color: #551b2e;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-decoration: none;
+}
+
+.visitor-dashboard-signout,
+.visitor-dashboard-login {
+  min-height: 44px;
+  padding: 0.65rem 1.2rem;
+  border: 1px solid #551b2e;
+  background: transparent;
+  color: #551b2e;
+  cursor: pointer;
+  font: inherit;
+}
+
+.visitor-dashboard-card {
+  width: min(100%, 560px);
+  margin: clamp(4rem, 14vh, 9rem) auto 0;
+  padding: clamp(2rem, 7vw, 4.5rem);
+  background: #f7f3ee;
+  text-align: center;
+  box-shadow: 0 18px 60px rgba(77, 31, 45, 0.08);
+}
+
+.visitor-dashboard-eyebrow {
+  margin-bottom: 0.75rem;
+  color: #8b6d56;
+  font-size: 0.9rem;
+  letter-spacing: 0.12em;
+}
+
+.visitor-dashboard-card h1 {
+  color: #551b2e;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.5rem, 8vw, 3.8rem);
+  font-weight: 500;
+}
+
+.visitor-count {
+  margin-top: 2.2rem;
+  color: #551b2e;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(5rem, 20vw, 8rem);
+  line-height: 1;
+}
+
+.visitor-dashboard-message {
+  margin-top: 1.5rem;
+  font-size: 1.15rem;
+}
+
+.visitor-dashboard-caption {
+  margin-top: 0.6rem;
+  color: #806d61;
+  font-size: 0.9rem;
+}
+
+.visitor-dashboard-login {
+  margin-top: 1.5rem;
+  background: #551b2e;
+  color: #fff8f3;
+}
+
+.visitor-dashboard-login:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.visitor-dashboard-error {
+  margin-top: 1.25rem;
+  color: #9f2d2d;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 480px) {
+  .visitor-dashboard {
+    padding-inline: 1rem;
+  }
+
+  .visitor-dashboard-card {
+    margin-top: 4rem;
+  }
+}
