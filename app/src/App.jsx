@@ -3,6 +3,16 @@ import './App.css'
 
 const instagramUrl = 'https://www.instagram.com/dearly_digitalstudio/'
 const instagramDmUrl = 'https://ig.me/m/dearly_digitalstudio'
+const whatsappInternational = '201065852613'
+
+const getWhatsappUrl = (lang = 'ar', context = '') => {
+  const defaultMsg =
+    lang === 'ar'
+      ? 'مرحباً ديرلي، أود الاستفسار عن تفاصيل تصميم تجربة رقمية.'
+      : "Hello Dearly Studio! I'd like to ask about creating a digital experience."
+  const msg = context ? `${defaultMsg} (${context})` : defaultMsg
+  return `https://wa.me/${whatsappInternational}?text=${encodeURIComponent(msg)}`
+}
 
 const templateCategories = [
   {
@@ -150,7 +160,10 @@ const siteCopy = {
   en: {
     nav: {
       templates: 'Templates',
+      features: 'Features',
+      packages: 'Packages',
       approach: 'Our approach',
+      faq: 'FAQ',
       gifts: 'Gifts',
       contact: 'Contact us',
       mainLabel: 'Main navigation',
@@ -178,8 +191,88 @@ const siteCopy = {
       comingSoon: 'Something lovely is on its way.',
       comingSoonIntro: 'We’re dreaming up',
       comingSoonOutro: 'templates for this collection. In the meantime, we can create one just for you.',
-      contact: 'Tell us what you have in mind',
+      contact: 'Chat with us on WhatsApp',
       previewBrand: 'A DEARLY EXPERIENCE'
+    },
+    features: {
+      eyebrow: 'THOUGHTFUL DETAILS',
+      title: 'Everything your guests need,',
+      titleAccent: 'made effortless.',
+      intro: 'Digital invitations that replace paper with interaction, warmth, and ease.',
+      items: [
+        {
+          id: 'rsvp',
+          title: 'Smart RSVP Tracking',
+          desc: 'Guests confirm attendance in seconds. Real-time headcounts organized for your seating arrangements.'
+        },
+        {
+          id: 'location',
+          title: 'One-Tap Directions',
+          desc: 'Direct Google Maps integration so your guests arrive smoothly with no confusion.'
+        },
+        {
+          id: 'music',
+          title: 'Personal Soundtrack',
+          desc: 'Your favorite song or gentle melody plays softly as the envelope opens.'
+        },
+        {
+          id: 'guestbook',
+          title: 'Digital Wishes & Notes',
+          desc: 'A warm space where loved ones leave heartfelt blessings and messages you keep forever.'
+        },
+        {
+          id: 'calendar',
+          title: 'Calendar & Live Countdown',
+          desc: 'Adds the celebration directly to phone calendars, accompanied by an exciting live countdown.'
+        }
+      ]
+    },
+    packages: {
+      eyebrow: 'TRANSPARENT PACKAGES',
+      title: 'Tailored for your',
+      titleAccent: 'special celebration.',
+      intro: 'From birthdays and love stories to workshop pages and complete wedding experiences.',
+      policyTitle: 'Booking & Payment Terms',
+      policyText: 'We start designing upon receiving a 50% deposit to secure your booking. The remaining balance is paid upon final review and delivery of your live invitation.',
+      list: [
+        {
+          id: 'collection',
+          name: 'Collection Template',
+          tag: 'Curated & Ready',
+          price: 'Starting from 200 EGP',
+          note: 'Covers birthdays, love stories, events & wedding invites · 20% OFF applied',
+          desc: 'Select any template from our catalog, customized with your details, photos, and music.',
+          features: [
+            'Any signature template from our collection',
+            'Full customization of names, dates & ceremony details',
+            'One-click Google Maps location button',
+            'Interactive RSVP guest confirmation',
+            'Custom background music of your choice',
+            'Delivered in 24 - 48 hours'
+          ],
+          cta: 'Order via WhatsApp',
+          ctaInsta: 'Or book via Instagram DM'
+        },
+        {
+          id: 'bespoke',
+          name: 'Bespoke Studio',
+          tag: 'Most Loved · 100% Custom',
+          isFeatured: true,
+          price: 'Custom Quote',
+          note: 'Tailored specifically around your vision',
+          desc: 'A one-of-a-kind digital world designed from scratch around your love story and event theme.',
+          features: [
+            '100% exclusive concept and design from scratch',
+            'Color palette & artwork matching your decor & flowers',
+            'Custom animations & unique interactions',
+            'Dedicated pages (Schedule, Our Story, Dress Code)',
+            'Interactive RSVP & memories guestbook',
+            'Priority revisions until absolute perfection'
+          ],
+          cta: 'Create Bespoke on WhatsApp',
+          ctaInsta: 'Or discuss via Instagram DM'
+        }
+      ]
     },
     approach: {
       eyebrow: 'MADE AROUND YOU',
@@ -194,14 +287,42 @@ const siteCopy = {
       eyebrow: 'THE DEARLY JOURNEY',
       title: 'A lovely thing,',
       titleSecond: 'made together.',
-      intro: 'Five little steps from first hello to ready to share.',
+      intro: 'Five simple steps from first idea to final delivery.',
       listLabel: 'The Dearly journey',
       steps: [
         { title: 'Let’s talk', description: 'We start with your story, the occasion, and the feeling you want to share.' },
-        { title: 'Share materials', description: 'Gather the words, photographs, and little details that make it yours.' },
+        { title: 'Details & Deposit', description: 'Share your words, photos, and ideas. We secure your booking with a 50% deposit to initiate design immediately.' },
         { title: 'We create', description: 'We shape your ideas into a thoughtful, one-of-a-kind digital experience.' },
-        { title: 'Review & revisions', description: 'Share your feedback and we will refine every detail together.' },
-        { title: 'Launch', description: 'Your finished experience is ready to share with the people you love.' }
+        { title: 'Review & revisions', description: 'Share your feedback and we will refine every detail together until you are in love with it.' },
+        { title: 'Delivery & Launch', description: 'Upon your final approval and settling the remaining balance, your experience is launched and ready to share.' }
+      ]
+    },
+    faq: {
+      eyebrow: 'FREQUENTLY ASKED',
+      title: 'Answers to your',
+      titleAccent: 'questions.',
+      intro: 'Everything you need to know about creating your digital invitation with Dearly.',
+      items: [
+        {
+          q: 'How long does it take to prepare and deliver the invitation?',
+          a: 'Templates from our collection are delivered within 24 to 48 hours after receiving your details. Fully custom bespoke designs take between 4 to 7 business days.'
+        },
+        {
+          q: 'How do I share the invitation with my guests?',
+          a: 'We send you a private, lightning-fast web link. You can send it directly via WhatsApp, Instagram, or family groups. It opens seamlessly like a native app on every mobile screen.'
+        },
+        {
+          q: 'Can we change the colors, text, or background music?',
+          a: 'Yes! Every design can be customized to match your wedding color scheme, fonts, wording in Arabic or English, and any song or audio clip you love.'
+        },
+        {
+          q: 'How does the RSVP attendance system work?',
+          a: 'When your guest opens the invitation, they can tap to confirm their attendance and specify guest count. You can view all confirmed guests instantly.'
+        },
+        {
+          q: 'What payment methods do you accept, and how does billing work?',
+          a: 'We accept convenient payment methods including InstaPay, Vodafone Cash, and Bank Transfer. Work begins upon receiving a 50% deposit to confirm your booking, and the remaining balance is paid upon final review and receiving your ready link.'
+        }
       ]
     },
     gifts: {
@@ -219,22 +340,26 @@ const siteCopy = {
       eyebrow: 'YOUR TURN',
       title: 'Have an idea?',
       titleSecond: 'Let’s make it real.',
-      contact: 'Message us on Instagram'
+      contact: 'Chat with us on WhatsApp'
     },
     footer: {
       copyright: '© 2026 Dearly Studio',
+      whatsapp: 'WhatsApp',
       instagram: 'Instagram',
       instagramLabel: 'Instagram'
     },
     metadata: {
-      title: 'Dearly | Wedding Invitations & Event Websites',
-      description: 'Dearly creates thoughtful wedding invitations and custom event websites for celebrations and life’s most meaningful moments.'
+      title: 'Dearly | Digital Invitations & Event Websites',
+      description: 'Dearly creates thoughtful wedding invitations, birthdays, love stories and custom event websites for life’s most meaningful moments.'
     }
   },
   ar: {
     nav: {
       templates: 'القوالب',
+      features: 'المميزات',
+      packages: 'الباقات',
       approach: 'كيف نعمل',
+      faq: 'الأسئلة الشائعة',
       gifts: 'هدايانا',
       contact: 'تواصلي معنا',
       mainLabel: 'القائمة الرئيسية',
@@ -262,8 +387,88 @@ const siteCopy = {
       comingSoon: 'قوالب جديدة في الطريق',
       comingSoonIntro: 'نعمل الآن على قوالب',
       comingSoonOutro: 'لتكتمل هذه المجموعة. وحتى ذلك الحين، يسعدنا تصميم تجربة خاصة بكم.',
-      contact: 'شاركونا فكرتكم',
+      contact: 'تواصلوا معنا عبر واتساب',
       previewBrand: 'تجربة من ديرلي'
+    },
+    features: {
+      eyebrow: 'تفاصيل تصنع الفارق',
+      title: 'كل ما يحتاجه ضيوفكم،',
+      titleAccent: 'في تجربة واحدة أنيقة.',
+      intro: 'دعوة رقمية ذكية تجمع بين الجمال، التفاعل، وسهولة وصول أحبتكم لمشاركتكم الفرحة.',
+      items: [
+        {
+          id: 'rsvp',
+          title: 'تأكيد الحضور الذكي (RSVP)',
+          desc: 'يؤكد ضيوفكم حضورهم بلمسة واحدة، لتصلكم قائمة دقيقة ومنظمة تسّهل عليكم ترتيب مقاعد القاعة.'
+        },
+        {
+          id: 'location',
+          title: 'خريطة القاعة المباشرة',
+          desc: 'زر مباشر يفتح موقع الحفل على خرائط Google Maps لتفادي أي ارتباك أو تأخير.'
+        },
+        {
+          id: 'music',
+          title: 'موسيقاكم وأغنيتكم المفضلة',
+          desc: 'تُعزف نغماتكم المختارة بنعومة فور فتح الظرف لتنقل أحبتكم إلى أجواء فرحتكم.'
+        },
+        {
+          id: 'guestbook',
+          title: 'دفتر تهاني وذكريات الأحبة',
+          desc: 'ركن دافئ يترك فيه الأهل والأصدقاء أرق الكلمات والتمنيات لتبقى ذكرى جميلة لمدى الحياة.'
+        },
+        {
+          id: 'calendar',
+          title: 'تذكير بالتقويم وعدّ تنازلي',
+          desc: 'إضافة موعد المناسبة لتقويم هاتف الضيوف بنقرة واحدة، مع عدّ تنازلي يزيد حماس اليوم المنتظر.'
+        }
+      ]
+    },
+    packages: {
+      eyebrow: 'باقات ديرلي',
+      title: 'اختر الباقة الأنسب',
+      titleAccent: 'لمناسبتكم.',
+      intro: 'تصاميم تناسب مختلف المناسبات من أعياد الميلاد وحكايات الحب إلى الفعاليات وحفلات الزفاف.',
+      policyTitle: 'نظام الدفع وتأكيد الحجز',
+      policyText: 'نبدأ العمل وتجهيز التصميم فور استلام عربون (Deposit) ٥٠٪ لتأكيد حجزكم، ويتم سداد باقي المبلغ عند المراجعة النهائية واستلام الرابط جاهزاً للمشاركة.',
+      list: [
+        {
+          id: 'collection',
+          name: 'قالب من مجموعتنا',
+          tag: 'جاهز ومميز',
+          price: 'تبدأ من ٢٠٠ ج.م',
+          note: 'تناسب مختلف المناسبات (أعياد ميلاد، حكايات حب، فعاليات، وزفاف) · يشملها خصم ٢٠٪',
+          desc: 'اختيار أي تصميم من قوالبنا المميزة مع تخصيص كامل للأسماء وتفاصيل الحفل والموسيقى.',
+          features: [
+            'أي قالب تختارونه من مجموعتنا المميزة',
+            'تخصيص كامل للأسماء والتواريخ وتفاصيل اليوم',
+            'خريطة Google Maps للوصول بضغطة زر',
+            'نظام تأكيد الحضور الذكي (RSVP)',
+            'إضافة مقطوعتكم الموسيقية المفضلة',
+            'تسليم فوري خلال ٢٤ إلى ٤٨ ساعة'
+          ],
+          cta: 'احجز عبر واتساب',
+          ctaInsta: 'أو احجز عبر إنستغرام DM'
+        },
+        {
+          id: 'bespoke',
+          name: 'تصميم خاص بالكامل (Bespoke)',
+          tag: 'الأكثر طلباً · حصري لكم',
+          isFeatured: true,
+          price: 'حسب التفاصيل',
+          note: 'تواصلوا معنا لمشاركة فكرتكم وثيم ليلتكم',
+          desc: 'عالم رقمي متفرد يُصمم من الصفر خصيصاً لكم ليعكس ثيم وألوان وقصة مناسبتكم بكل تفاصيلها.',
+          features: [
+            'فكرة وهوية بصرية حصرية ١٠٠٪ من الصفر',
+            'رسومات وزخارف متوافقة مع ديكور وثيم الحفل',
+            'تأثيرات وحركات تفاعلية مبتكرة خاصة بكم',
+            'صفحات فرعية (برنامج اليوم، قصة اللقاء، الدريس كود)',
+            'نظام RSVP متقدم ودفتر تهاني تفاعلي',
+            'متابعة شخصية وتعديلات حتى الرضا التام'
+          ],
+          cta: 'صمّم فكرتك عبر واتساب',
+          ctaInsta: 'أو ناقش فكرتك عبر إنستغرام DM'
+        }
+      ]
     },
     approach: {
       eyebrow: 'نصمّمها لكم',
@@ -282,10 +487,38 @@ const siteCopy = {
       listLabel: 'خطوات العمل مع ديرلي',
       steps: [
         { title: 'نتعرّف إلى فكرتكم', description: 'نستمع إلى فكرتكم ونتعرّف إلى مناسبتكم والأجواء التي تتمنونها.' },
-        { title: 'تشاركونا التفاصيل', description: 'ترسلون لنا الصور والكلمات والتفاصيل التي تمنح التجربة طابعها الخاص.' },
+        { title: 'التفاصيل والعربون', description: 'تشاركونا الصور والكلمات والتفاصيل، ونؤكد الحجز بدفع عربون (Deposit) ٥٠٪ لنبدأ العمل والتصميم مباشرة.' },
         { title: 'نبدأ التصميم', description: 'نحوّل ما شاركتمونا به إلى تجربة رقمية مصممة بعناية من أجلكم.' },
         { title: 'نراجعها معًا', description: 'تطّلعون على التصميم وتشاركونا ملاحظاتكم لنصل إلى النتيجة التي تحبونها.' },
-        { title: 'تصبح جاهزة للمشاركة', description: 'نطلق تجربتكم لتشاركوها مع العائلة والأصدقاء في مناسبتكم.' }
+        { title: 'الاستلام والإطلاق', description: 'بعد مراجعتكم للتصميم واعتماده وسداد باقي المبلغ، نطلق تجربتكم فوراً لتشاركوها مع العائلة والأصدقاء.' }
+      ]
+    },
+    faq: {
+      eyebrow: 'الأسئلة الشائعة',
+      title: 'كل ما تحتاجون معرفته',
+      titleAccent: 'قبل البدء.',
+      intro: 'إجابات واضحة ومباشرة عن كافة تساؤلاتكم حول دعوات ومواقع ديرلي الرقمية.',
+      items: [
+        {
+          q: 'كم يستغرق تجهيز الدعوة وتسليمها؟',
+          a: 'القوالب الجاهزة من مجموعتنا تُسلّم خلال ٢٤ إلى ٤٨ ساعة بعد استلام بياناتكم. أما التصاميم الخاصة بالكامل (Bespoke) فتستغرق من ٤ إلى ٧ أيام عمل.'
+        },
+        {
+          q: 'كيف أشارك الدعوة مع ضيوفي؟',
+          a: 'نرسل لكم رابطاً خاصاً وسريعاً للغاية، يمكنكم إرساله بنقرة واحدة عبر واتساب أو وضعه في رسائل العائلة. ويفتح بشكل تفاعلي مبهر على جميع الهواتف.'
+        },
+        {
+          q: 'هل يمكن تعديل الألوان، الموسيقى، أو الكلمات؟',
+          a: 'نعم بالتأكيد! كل قالب قابل للتعديل كاملاً ليناسب ألوان ثيم الحفل، ونبرة الكلمات باللغة العربية أو الإنجليزية، واختيار المقطع الموسيقي المحبب لديكم.'
+        },
+        {
+          q: 'كيف يعمل نظام تأكيد الحضور (RSVP)؟',
+          a: 'يجد الضيف زراً سهلاً لتأكيد حضوره وتحديد عدد الأفراد المرافقين، وتصلكم التأكيدات مباشرة في لوحة تحكم منظمة لترتيب المقاعد والحضور بكل راحة.'
+        },
+        {
+          q: 'ما هي طرق الدفع المتاحة؟ وكيف يتم سداد الحساب؟',
+          a: 'نوفر طرق دفع سهلة وسريعة (إنستاباي InstaPay، فودافون كاش، أو التحويل البنكي). نبدأ العمل فور استلام عربون (Deposit) ٥٠٪ لتأكيد الحجز وتجهيز التصميم، ويتم سداد باقي المبلغ عند الاستلام والمراجعة النهائية للتصميم.'
+        }
       ]
     },
     gifts: {
@@ -303,16 +536,17 @@ const siteCopy = {
       eyebrow: 'والآن، دوركم',
       title: 'هل لديكم فكرة؟',
       titleSecond: 'يسعدنا أن نصنعها معكم.',
-      contact: 'راسلونا على إنستغرام'
+      contact: 'تواصلوا معنا عبر واتساب'
     },
     footer: {
       copyright: '© ٢٠٢٦ · ديرلي',
+      whatsapp: 'واتساب',
       instagram: 'إنستغرام',
       instagramLabel: 'إنستغرام'
     },
     metadata: {
-      title: 'ديرلي | دعوات زفاف ومواقع مناسبات بتصميم خاص',
-      description: 'نصمّم في ديرلي دعوات زفاف ومواقع إلكترونية للمناسبات، بتفاصيل تعبّر عنكم وتليق بأجمل لحظاتكم.'
+      title: 'ديرلي | دعوات ومواقع مناسبات بتصميم خاص',
+      description: 'نصمّم في ديرلي دعوات زفاف ومواقع إلكترونية للمناسبات وأعياد الميلاد، بتفاصيل تعبّر عنكم وتليق بأجمل لحظاتكم.'
     }
   }
 }
@@ -431,7 +665,106 @@ function TimelineArrowIcon() {
   )
 }
 
+function WhatsAppIcon({ className = 'whatsapp-icon' }) {
+  return (
+    <svg
+      className={className}
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.456 5.711 1.457h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+    </svg>
+  )
+}
 
+function InstagramSmallIcon({ className = 'insta-icon' }) {
+  return (
+    <svg
+      className={className}
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="0.75" fill="currentColor" stroke="none" />
+    </svg>
+  )
+}
+
+function ChevronDownIcon() {
+  return (
+    <svg className="chevron-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+      <path d="M3 6l5 5 5-5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+    </svg>
+  )
+}
+
+function CheckIcon() {
+  return (
+    <svg className="check-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+      <path d="M3.5 8.5l3 3 6-6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+    </svg>
+  )
+}
+
+function FeatureIcon({ type }) {
+  if (type === 'rsvp') {
+    return (
+      <svg className="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
+        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+        <path d="m9 12 2 2 4-4" />
+      </svg>
+    )
+  }
+  if (type === 'location') {
+    return (
+      <svg className="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
+        <path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z" />
+        <circle cx="12" cy="10" r="3" />
+      </svg>
+    )
+  }
+  if (type === 'music') {
+    return (
+      <svg className="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
+        <path d="M9 18V5l12-2v13" />
+        <circle cx="6" cy="18" r="3" />
+        <circle cx="18" cy="16" r="3" />
+      </svg>
+    )
+  }
+  if (type === 'guestbook') {
+    return (
+      <svg className="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
+        <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z" />
+        <path d="M6 6h10" />
+        <path d="M6 10h10" />
+        <path d="M6 14h6" />
+      </svg>
+    )
+  }
+  return (
+    <svg className="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
+      <rect x="3" y="4" width="18" height="18" rx="2" />
+      <line x1="16" y1="2" x2="16" y2="6" />
+      <line x1="8" y1="2" x2="8" y2="6" />
+      <line x1="3" y1="10" x2="21" y2="10" />
+      <circle cx="12" cy="15" r="1.5" />
+    </svg>
+  )
+}
 
 function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -439,6 +772,7 @@ function App() {
   const [siteLanguage, setSiteLanguage] = useState('en')
   const [activeJourneyStep, setActiveJourneyStep] = useState('01')
   const [journeyHasBeenOpened, setJourneyHasBeenOpened] = useState(false)
+  const [activeFaq, setActiveFaq] = useState(null)
   const copy = siteCopy[siteLanguage]
   const selectedJourneyStep = copy.journey.steps[Number(activeJourneyStep) - 1]
   const approachSteps = copy.approach.steps
@@ -497,7 +831,10 @@ function App() {
         >
           {[
             { label: copy.nav.templates, href: '#experiences' },
+            { label: copy.nav.features, href: '#features' },
+            { label: copy.nav.packages, href: '#packages' },
             { label: copy.nav.approach, href: '#journey' },
+            { label: copy.nav.faq, href: '#faq' },
             { label: copy.nav.gifts, href: '#gifts' }
           ].map((item) => (
             <a
@@ -512,12 +849,13 @@ function App() {
 
           <a
             className="contact-btn mobile-contact-btn"
-            href={instagramDmUrl}
+            href={getWhatsappUrl(siteLanguage)}
             target="_blank"
             rel="noreferrer"
             onClick={() => setMobileMenuOpen(false)}
           >
-            {copy.nav.contact}
+            <WhatsAppIcon />
+            <span>{copy.nav.contact}</span>
           </a>
         </nav>
 
@@ -543,11 +881,12 @@ function App() {
 
         <a
           className="contact-btn desktop-contact-btn"
-          href={instagramDmUrl}
+          href={getWhatsappUrl(siteLanguage)}
           target="_blank"
           rel="noreferrer"
         >
-          {copy.nav.contact}
+          <WhatsAppIcon />
+          <span>{copy.nav.contact}</span>
         </a>
       </header>
 
@@ -686,10 +1025,108 @@ function App() {
                   {selectedTemplateCategory?.types[siteLanguage]}{' '}
                   {copy.templates.comingSoonOutro}
                 </p>
-                <a href={instagramDmUrl} target="_blank" rel="noreferrer">
-                  {copy.templates.contact} <ExternalArrowIcon />
+                <a href={getWhatsappUrl(siteLanguage, selectedTemplateCategory?.label[siteLanguage])} target="_blank" rel="noreferrer">
+                  <WhatsAppIcon />
+                  <span>{copy.templates.contact}</span>
                 </a>
               </div>
+            </div>
+          )}
+        </section>
+
+        <section id="features" className="features-section" aria-labelledby="features-heading">
+          <div className="section-head text-center">
+            <p className="eyebrow muted">{copy.features.eyebrow}</p>
+            <h2 id="features-heading">
+              {copy.features.title}
+              <span>{copy.features.titleAccent}</span>
+            </h2>
+            <p className="section-intro">{copy.features.intro}</p>
+          </div>
+
+          <div className="features-grid">
+            {copy.features.items.map((item, index) => (
+              <article key={item.id} className="feature-card">
+                <span className="feature-number">{String(index + 1).padStart(2, '0')}</span>
+                <div className="feature-icon-wrap" aria-hidden="true">
+                  <FeatureIcon type={item.id} />
+                </div>
+                <h3>{item.title}</h3>
+                <p>{item.desc}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section id="packages" className="packages-section" aria-labelledby="packages-heading">
+          <div className="section-head text-center">
+            <p className="eyebrow muted">{copy.packages.eyebrow}</p>
+            <h2 id="packages-heading">
+              {copy.packages.title}
+              <span>{copy.packages.titleAccent}</span>
+            </h2>
+            <p className="section-intro">{copy.packages.intro}</p>
+          </div>
+
+          <div className="packages-grid">
+            {copy.packages.list.map((pkg) => (
+              <div
+                key={pkg.id}
+                className={`package-card ${pkg.isFeatured ? 'is-featured' : ''}`}
+              >
+                {pkg.isFeatured && (
+                  <span className="package-ribbon">{pkg.tag}</span>
+                )}
+                <div className="package-header">
+                  {!pkg.isFeatured && <span className="package-tag">{pkg.tag}</span>}
+                  <h3>{pkg.name}</h3>
+                  <div className="package-price">
+                    <span className="price-value">{pkg.price}</span>
+                  </div>
+                  <p className="package-note">{pkg.note}</p>
+                  <p className="package-description">{pkg.desc}</p>
+                </div>
+
+                <ul className="package-features" aria-label={pkg.name}>
+                  {pkg.features.map((feat) => (
+                    <li key={feat}>
+                      <CheckIcon />
+                      <span>{feat}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="package-actions">
+                  <a
+                    className={`package-btn ${pkg.isFeatured ? 'primary-btn' : 'secondary-btn'}`}
+                    href={getWhatsappUrl(siteLanguage, pkg.name)}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <WhatsAppIcon />
+                    <span>{pkg.cta}</span>
+                  </a>
+                  <a
+                    className="package-btn-insta"
+                    href={instagramDmUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <InstagramSmallIcon />
+                    <span>{pkg.ctaInsta}</span>
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {copy.packages.policyText && (
+            <div className="packages-payment-policy">
+              <span className="policy-badge">
+                <CheckIcon />
+                <span>{copy.packages.policyTitle}</span>
+              </span>
+              <p>{copy.packages.policyText}</p>
             </div>
           )}
         </section>
@@ -777,6 +1214,57 @@ function App() {
           </div>
         </section>
 
+        <section id="faq" className="faq-section" aria-labelledby="faq-heading">
+          <div className="section-head text-center">
+            <p className="eyebrow muted">{copy.faq.eyebrow}</p>
+            <h2 id="faq-heading">
+              {copy.faq.title}
+              <span>{copy.faq.titleAccent}</span>
+            </h2>
+            <p className="section-intro">{copy.faq.intro}</p>
+          </div>
+
+          <div className="faq-accordion">
+            {copy.faq.items.map((item, index) => {
+              const isOpen = activeFaq === index
+              return (
+                <div
+                  key={item.q}
+                  className={`faq-item ${isOpen ? 'is-open' : ''}`}
+                >
+                  <button
+                    type="button"
+                    className="faq-question"
+                    aria-expanded={isOpen}
+                    onClick={() => setActiveFaq(isOpen ? null : index)}
+                  >
+                    <span>{item.q}</span>
+                    <span className="faq-icon" aria-hidden="true">
+                      <ChevronDownIcon />
+                    </span>
+                  </button>
+                  <div className="faq-answer" hidden={!isOpen}>
+                    <p>{item.a}</p>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+
+          <div className="faq-footer-help">
+            <p>
+              {siteLanguage === 'ar' ? 'لديك استفسار آخر أو طلب خاص؟' : 'Have a special request or another question?'}{' '}
+              <a
+                href={getWhatsappUrl(siteLanguage, 'FAQ inquiry')}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {siteLanguage === 'ar' ? 'تحدث معنا مباشرة عبر واتساب' : 'Chat directly with us on WhatsApp'}
+              </a>
+            </p>
+          </div>
+        </section>
+
         <section id="gifts" className="gift-section">
           <div className="gift-visual" aria-hidden="true">
             <span className="gift-sprig sprig-left" />
@@ -828,37 +1316,40 @@ function App() {
               <span>{copy.closing.titleSecond}</span>
             </h2>
           </div>
-          <a
-            className="primary-btn"
-            href={instagramDmUrl}
-            target="_blank"
-            rel="noreferrer"
-          >
-            {copy.closing.contact}
-          </a>
         </section>
 
         <footer className="site-footer">
           <p>{copy.footer.copyright}</p>
-          <a href={instagramUrl} target="_blank" rel="noreferrer" aria-label={copy.footer.instagramLabel}>
-            <svg
-              className="instagram-icon"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.7"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-              focusable="false"
+          <div className="footer-links">
+            <a
+              href={getWhatsappUrl(siteLanguage)}
+              target="_blank"
+              rel="noreferrer"
+              className="footer-whatsapp-link"
+              aria-label={copy.footer.whatsapp}
             >
-              <rect x="3" y="3" width="18" height="18" rx="5" />
-              <circle cx="12" cy="12" r="4" />
-              <circle cx="17.5" cy="6.5" r="0.75" fill="currentColor" stroke="none" />
-            </svg>
-            {copy.footer.instagram}
-          </a>
+              <WhatsAppIcon />
+              <span>{copy.footer.whatsapp}</span>
+            </a>
+            <a href={instagramUrl} target="_blank" rel="noreferrer" aria-label={copy.footer.instagramLabel}>
+              <InstagramSmallIcon className="instagram-icon" />
+              <span>{copy.footer.instagram}</span>
+            </a>
+          </div>
         </footer>
+
+        <a
+          href={getWhatsappUrl(siteLanguage)}
+          target="_blank"
+          rel="noreferrer"
+          className="floating-whatsapp"
+          aria-label={siteLanguage === 'ar' ? 'تواصل معنا عبر واتساب' : 'Chat on WhatsApp'}
+        >
+          <WhatsAppIcon />
+          <span className="floating-whatsapp-text">
+            {siteLanguage === 'ar' ? 'واتساب' : 'WhatsApp'}
+          </span>
+        </a>
       </main>
     </div>
   )
