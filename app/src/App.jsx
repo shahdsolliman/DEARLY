@@ -144,8 +144,8 @@ const templates = [
       ar: {
         kicker: 'ورشة إبداعية',
         headline: 'Chroma',
-        subtitle: 'اختاري ألوانك وابتكري ملمعك الخاص',
-        detail: 'تجربة ممتعة لعاشقات الجمال'
+        subtitle: 'اختاروا ألوانكم وابتكروا ملمعكم الخاص',
+        detail: 'تجربة ممتعة لعشاق الجمال والإبداع'
       }
     },
     previewAssets: {
@@ -361,10 +361,10 @@ const siteCopy = {
       approach: 'كيف نعمل',
       faq: 'الأسئلة الشائعة',
       gifts: 'هدايانا',
-      contact: 'تواصلي معنا',
+      contact: 'تواصل معنا',
       mainLabel: 'القائمة الرئيسية',
-      openMenu: 'افتحي القائمة',
-      closeMenu: 'أغلقي القائمة',
+      openMenu: 'فتح القائمة',
+      closeMenu: 'إغلاق القائمة',
       languageLabel: 'لغة الموقع'
     },
     hero: {
@@ -382,8 +382,8 @@ const siteCopy = {
       intro: 'تصفّحوا تصاميمنا واختاروا ما يعبّر عن مناسبتكم.',
       languageLabel: 'لغة الموقع',
       filterLabel: 'تصفّح القوالب حسب المناسبة',
-      openTemplate: 'شاهدي القالب',
-      openMessages: 'افتحي الرسائل',
+      openTemplate: 'معاينة القالب',
+      openMessages: 'عرض الرسائل',
       comingSoon: 'قوالب جديدة في الطريق',
       comingSoonIntro: 'نعمل الآن على قوالب',
       comingSoonOutro: 'لتكتمل هذه المجموعة. وحتى ذلك الحين، يسعدنا تصميم تجربة خاصة بكم.',
@@ -846,17 +846,6 @@ function App() {
               {item.label.toUpperCase()}
             </a>
           ))}
-
-          <a
-            className="contact-btn mobile-contact-btn"
-            href={getWhatsappUrl(siteLanguage)}
-            target="_blank"
-            rel="noreferrer"
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            <WhatsAppIcon />
-            <span>{copy.nav.contact}</span>
-          </a>
         </nav>
 
         <div className="header-language-switch" role="group" aria-label={copy.nav.languageLabel}>
@@ -878,16 +867,6 @@ function App() {
             عربي
           </button>
         </div>
-
-        <a
-          className="contact-btn desktop-contact-btn"
-          href={getWhatsappUrl(siteLanguage)}
-          target="_blank"
-          rel="noreferrer"
-        >
-          <WhatsAppIcon />
-          <span>{copy.nav.contact}</span>
-        </a>
       </header>
 
       <main id="home">
